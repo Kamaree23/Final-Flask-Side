@@ -7,12 +7,13 @@ from secrets import token_hex
 db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
-    id = db.Column(db.String(50), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    first_name = db.Column(db.String(50))
-    last_name = db.Column(db.String(50))
+    fname = db.Column(db.String(50), nullable=False, unique=True)
+    lname = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
+    apitoken = db.Column(db.String, default=None, nullable=True)
     date_created = db.Column(db.DateTime, default=datetime.now(timezone.utc))
 
     def __init__(self, username, email, password, fname, lname):

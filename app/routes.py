@@ -36,7 +36,7 @@ def signMeUpAPI():
             else:
 
                 # properties added to db
-                user = User(fname, lname, username, email, password)
+                user = User( username, email, fname, lname, password)
                 
                 
                 user.saveToDB()
